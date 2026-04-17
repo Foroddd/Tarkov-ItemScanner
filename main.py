@@ -5,6 +5,7 @@ import pytesseract
 import webbrowser
 import requests
 from PIL import Image
+import time
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -77,4 +78,8 @@ def on_hotkey():
 
 keyboard.add_hotkey('shift+f6', on_hotkey)
 print("Hover over an item so the tooltip is visible, then press Shift+F6. ESC to quit.")
-keyboard.wait('esc')
+try:
+    while True:
+        time.sleep(1)
+except KeyboardInterrupt:
+    print("Stopped.")
