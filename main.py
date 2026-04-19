@@ -28,17 +28,22 @@ def lookup_item(name):
     }
     """ % name
 
-    response = requests.post(
-        "https://api.tarkov.dev/graphql",
-        json={"query": query}
-    )
-
-    data = response.json()
-    items = data.get("data", {}).get("items", [])
-
-    if items:
-        return items[0]["link"]
-    return None
+    try:
+        response = requests.post(
+            "https://api.tarkov.dev/graphql",
+            json={"query": query}
+        )
+        data = response.json()
+        if data is None:
+            print("API returned empty response")
+            return None
+        items = data.get("data", {}).get("items", [])
+        if items:
+            return items[0]["link"]
+        return None
+    except Exception as e:
+        print(f"API error: {e}")
+        return None
 
 def on_hotkey():
     mx, my = pyautogui.position()
