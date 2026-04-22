@@ -81,8 +81,8 @@ def on_hotkey():
     else:
         print("Item not found on tarkov.dev")
 
-keyboard.add_hotkey('shift+f6', on_hotkey)
-print("Hover over an item so the tooltip is visible, then press Shift+F6. ESC to quit.")
+keyboard.add_hotkey('shift+f5', on_hotkey)  # EDIT THIS TO CHANGE HOTKEY
+print("Hover over an item so the tooltip is visible, then press Shift+F5. ESC to quit.")
 try:
     while True:
         time.sleep(1)
